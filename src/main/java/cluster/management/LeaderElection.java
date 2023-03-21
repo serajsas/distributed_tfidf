@@ -19,6 +19,9 @@ public class LeaderElection implements Watcher {
     }
 
     public void volunteerForLeadership() throws KeeperException, InterruptedException {
+        if (zooKeeper.exists(ELECTION_NAMESPACE, false) == null) {
+            zooKeeper.create(ELECTION_NAMESPACE, new byte[]{}, ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.PERSISTENT);
+        }
         String znodePrefix = ELECTION_NAMESPACE + "/c_";
         String znodeFullPath = zooKeeper.create(znodePrefix,
                 new byte[]{},

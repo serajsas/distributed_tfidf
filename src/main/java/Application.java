@@ -8,9 +8,7 @@ import org.apache.zookeeper.ZooKeeper;
 
 import java.io.IOException;
 
-/**
- * Search Cluster Coordinator - Distributed Search Part 2
- */
+
 public class Application implements Watcher {
     private static final String ZOOKEEPER_ADDRESS = "localhost:2181";
     private static final int SESSION_TIMEOUT = 3000;
